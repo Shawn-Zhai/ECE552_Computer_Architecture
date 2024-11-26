@@ -1,0 +1,80 @@
+1: fetching: lw        r16,0(r29)(1)
+1:  adding instn to tail: lw        r16,0(r29)(1)
+IFQ_head = 0, tail =1, size= 1
+1: IFQ head: lw        r16,0(r29)(1)
+available fu int = 0
+IFQ not empty, cycle: 2
+2: fetching: lui       r28,0x1002(2)
+2:  adding instn to tail: lui       r28,0x1002(2)
+IFQ_head = 0, tail =2, size= 2
+2: IFQ head: lw        r16,0(r29)(1)
+available fu int = 0
+IFQ not empty, cycle: 3
+3: fetching: addiu     r28,r28,-23968(3)
+3:  adding instn to tail: addiu     r28,r28,-23968(3)
+IFQ_head = 1, tail =3, size= 2
+3: IFQ head: lui       r28,0x1002(2)
+available fu int = 0
+3: executable int instn: lw        r16,0(r29)(1)
+IFQ not empty, cycle: 4
+4: fetching: addiu     r17,r29,4(4)
+4:  adding instn to tail: addiu     r17,r29,4(4)
+IFQ_head = 2, tail =4, size= 2
+4: IFQ head: addiu     r28,r28,-23968(3)
+available fu int = 1
+4: executable int instn: lui       r28,0x1002(2)
+IFQ not empty, cycle: 5
+5: fetching: addiu     r3,r17,4(5)
+5:  adding instn to tail: addiu     r3,r17,4(5)
+IFQ_head = 3, tail =5, size= 2
+5: IFQ head: addiu     r17,r29,4(4)
+available fu int = 2
+IFQ not empty, cycle: 6
+6: fetching: sll       r2,r16,2(6)
+6:  adding instn to tail: sll       r2,r16,2(6)
+IFQ_head = 4, tail =6, size= 2
+6: IFQ head: addiu     r3,r17,4(5)
+available fu int = 2
+6: executable int instn: addiu     r17,r29,4(4)
+IFQ not empty, cycle: 7
+7: fetching: addu      r3,r3,r2(7)
+7:  adding instn to tail: addu      r3,r3,r2(7)
+IFQ_head = 5, tail =7, size= 2
+7: IFQ head: sll       r2,r16,2(6)
+available fu int = -1
+IFQ not empty, cycle: 8
+8: fetching: addu      r18,r0,r3(8)
+8:  adding instn to tail: addu      r18,r0,r3(8)
+IFQ_head = 5, tail =8, size= 3
+8: IFQ head: sll       r2,r16,2(6)
+available fu int = -1
+IFQ not empty, cycle: 9
+9: fetching: sw        r18,-31644(r28)(9)
+9:  adding instn to tail: sw        r18,-31644(r28)(9)
+IFQ_head = 5, tail =9, size= 4
+9: IFQ head: sll       r2,r16,2(6)
+available fu int = -1
+IFQ not empty, cycle: 10
+10: fetching: addiu     r29,r29,-24(10)
+10:  adding instn to tail: addiu     r29,r29,-24(10)
+IFQ_head = 5, tail =10, size= 5
+10: IFQ head: sll       r2,r16,2(6)
+available fu int = 1
+10: executable int instn: addiu     r28,r28,-23968(3)
+IFQ not empty, cycle: 11
+11: fetching: <invalid inst: 0x00000000:00000000>(0)
+11:  adding instn to tail: <invalid inst: 0x00000000:00000000>(0)
+IFQ_head = 5, tail =11, size= 6
+11: IFQ head: sll       r2,r16,2(6)
+available fu int = -1
+TOMASULO TABLE
+lw        r16,0(r29)	1	2	3	0
+lui       r28,0x1002	2	3	4	9
+addiu     r28,r28,-23968	3	4	10	0
+addiu     r17,r29,4	4	5	6	11
+addiu     r3,r17,4	5	6	0	0
+sll       r2,r16,2	6	0	0	0
+addu      r3,r3,r2	7	0	0	0
+addu      r18,r0,r3	8	0	0	0
+sw        r18,-31644(r28)	9	0	0	0
+addiu     r29,r29,-24	10	0	0	0
